@@ -1,7 +1,6 @@
 import tkinter as tk
 from tkinter import ttk
 import sqlite3
-from Login import iniciar_aplicacion
 
 iniciar_aplicacion()
 
@@ -12,6 +11,7 @@ cursor = conn.cursor()
 # Crear una ventana
 app = tk.Tk()
 app.title("Gestión de Pedidos")
+app.geometry('540x380')
 
 # Crear pestañas
 notebook = ttk.Notebook(app)
