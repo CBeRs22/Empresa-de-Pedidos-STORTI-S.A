@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 
-credenciales = {"usuario": "contrasena"}
+credenciales = {"ProfeStorti": "isft232"}
 
 def verificar_credenciales():
     usuario = entry_usuario.get()
@@ -9,7 +9,7 @@ def verificar_credenciales():
 
     if usuario in credenciales and credenciales[usuario] == contrasena:
         ventana_inicio.destroy()
-        iniciar_aplicacion()
+        exec(open("Logistica.py").read())
     else:
         messagebox.showerror("Error de inicio de sesión", "Credenciales incorrectas")
 
@@ -18,6 +18,7 @@ def iniciar_aplicacion():
 
 ventana_inicio = tk.Tk()
 ventana_inicio.title("Inicio de Sesión")
+ventana_inicio.geometry('480x280')
 
 label_usuario = tk.Label(ventana_inicio, text="Usuario:")
 entry_usuario = tk.Entry(ventana_inicio)
