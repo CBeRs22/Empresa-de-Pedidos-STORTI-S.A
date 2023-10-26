@@ -1,36 +1,39 @@
-import tkinter as tk
+import tkinter
 from tkinter import messagebox
+from tkinter import ttk
 
 credenciales = {"ProfeStorti": "isft232"}
+ 
+# Crea la ventana.
 
-def verificar_credenciales():
-    usuario = entry_usuario.get()
-    contrasena = entry_contrasena.get()
+ventana = tkinter.Tk()
+ventana.title("Inicio de Sesión")
+ventana.geometry('440x280')
 
-    if usuario in credenciales and credenciales[usuario] == contrasena:
-        ventana_inicio.destroy()
+# Formulario para iniciar sesión.
+
+etiqueta1 = tkinter.Label(ventana, text = "Usuario:")
+entrada1 = tkinter.Entry(ventana)
+etiqueta2 = tkinter.Label(ventana, text = "Contraseña:")
+entrada2 = tkinter.Entry(ventana, show = "*")
+check1 = ttk.Checkbutton(ventana, text = "Recordarme")
+
+def verificacion():
+    usuario = entrada1.get()
+    contrasena = entrada2.get()
+    if credenciales.get(usuario) == contrasena:
+        ventana.destroy()
         exec(open("Logistica.py").read())
     else:
         messagebox.showerror("Error de inicio de sesión", "Credenciales incorrectas")
 
-def iniciar_aplicacion():
-    app = tk.Tk()
+boton1 = tkinter.Button(ventana, text = "Iniciar Sesión", command = verificacion)
 
-ventana_inicio = tk.Tk()
-ventana_inicio.title("Inicio de Sesión")
-ventana_inicio.geometry('480x280')
+etiqueta1.pack()
+entrada1.pack()
+etiqueta2.pack()
+entrada2.pack()
+boton1.pack()
+check1.pack()
 
-label_usuario = tk.Label(ventana_inicio, text="Usuario:")
-entry_usuario = tk.Entry(ventana_inicio)
-label_contrasena = tk.Label(ventana_inicio, text="Contraseña:")
-entry_contrasena = tk.Entry(ventana_inicio, show="*")
-
-btn_iniciar_sesion = tk.Button(ventana_inicio, text="Iniciar Sesión", command=verificar_credenciales)
-
-label_usuario.pack()
-entry_usuario.pack()
-label_contrasena.pack()
-entry_contrasena.pack()
-btn_iniciar_sesion.pack()
-
-ventana_inicio.mainloop()
+ventana.mainloop()
